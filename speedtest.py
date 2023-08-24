@@ -18,7 +18,7 @@ def speed_test():
     return tester.results.dict()
 
 
-@loader.module(name="speed test", author="teagram")
+@loader.module(name="speed test", author="HotDrify")
 class SpeedTestMod(loader.Module):
     """Тест интернета"""
     def __init__(self):
