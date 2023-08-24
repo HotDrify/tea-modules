@@ -1,4 +1,4 @@
-p align="center">
+<p align="center">
     <img src="./assets/bot_avatar.png" width="500" alt="teagram-UB">
     <br>
     <b><a href="https://t.me/UBteagram">Teagram UserBot</a></b> — репозиторий
