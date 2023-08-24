@@ -26,7 +26,13 @@ class SpeedTestMod(loader.Module):
             ConfigValue(
                 'text',
                 '📥скачивание: {download}MiB\n📤загрузка: {upload}MiB\n🏓задержка: {ping}MS',
-                '📥скачивание: {download}MiB\n📤загрузка: {upload}MiB\n🏓задержка: {ping}MS',
+                'скачивание: {download}MiB\n📤загрузка: {upload}MiB\n🏓задержка: {ping}MS',
+                validators.String()
+            ),
+            ConfigValue(
+                'wait',
+                '⚗️ считаем...',
+                '⚗️ считаем...',
                 validators.String()
             )
         )
@@ -34,7 +40,7 @@ class SpeedTestMod(loader.Module):
     async def speedtest_cmd(self, app: Client, message: types.Message):
         """Запускает тест скорости. Использование: speedtest"""
         await utils.answer(
-            message, "<b>Запускаем тест...</b>")
+            message, self.config["wait"])
  
         result = speed_test()
         await utils.answer(
