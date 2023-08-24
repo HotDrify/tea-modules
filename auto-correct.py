@@ -54,4 +54,32 @@ class AutoCorrectMod(loader.Module):
         )
     
     async def watcher(self, app: Client, message: types.Message):
+        if not self.config["status"]:
+            return
+        if self.config["is_ping"]:
+            if "@" in message.text:
+                return
+        if self.config["is_slash"]:
+            if "/" in message.text:
+                return
+        if self.config["is_link"]:
+            if "https" in message.text or "http" in message.text:
+                return
+                
+        response = requests.get(
+            self.config["api_base"],
+            params = {
+                'text': message.text,
+                'lang': self.config["lang"],
+                'options': 512
+            }
+        )
         
+        data = response.json()
+        ctext = message.text
+        
+        for mistake in data:
+            ctext = ctext[:mistake['pos']] + mistake['s'][0] + ctext[mistake['pos']+mistake['len']:]
+        
+        if message.text != ctext:
+            await utils.answer(message, ctext)
