@@ -15,7 +15,6 @@
 </p>
 <h1>как устанавливать</h1>
 <h2>отдельно</h2>
-.dlmod https://raw.githubusercontent.com/hotdrify/tea-modules/main/<файл>
+через команду "dlmod": dlmod https://raw.githubusercontent.com/hotdrify/tea-modules/main/<модуль>.py
 <h2>все</h2>
-.dlrepo https://github.com/hotdrify/tea-modules
-.dlmod all
+через команды "dlrepo" и "dlmod": сначала dlrepo https://github.com/hotdrify/tea-modules а потом dlmod all
