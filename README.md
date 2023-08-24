@@ -12,6 +12,4 @@
     </a>
     <br>
     <br>
-    <img alt="last commit" src="https://img.shields.io/github/last-commit/HotDrify/teagram?style=for-the-badge">
-    <img alt="stars" src="https://img.shields.io/github/stars/HotDrify/teagram?style=for-the-badge">
 </p>
