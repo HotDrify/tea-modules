@@ -21,5 +21,5 @@ class SummerMod(loader.Module):
             f"Минут: <code>{stime.seconds // 60 % 60}</code>\n",
             f"Секунд: <code>{stime.seconds % 60}</code>\n"
         )
-        await utils.answer(
+        return await utils.answer(
             message, text)
