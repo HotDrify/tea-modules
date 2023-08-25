@@ -7,6 +7,8 @@ class SummerMod(loader.Module):
     """через сколько лето?"""
     async def sum_cmd(self, app: Client, message: types.Message):
         """таймер лета"""
+        await utils.answer(
+            message, "<b>⌛ считаем...</b>")
         now = datetime.now()
         summer = datetime(now.year, 6, 1)
         if now.month > 6 or (now.month == 6 and now.day > 1):
