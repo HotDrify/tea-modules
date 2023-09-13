@@ -47,6 +47,6 @@ class FiltersMod(loader.Module):
     async def watcher(self, app: Client, message: types.Message):
         filters = self.db.get("Filters", "filters", {})
         if str(message.chat.id) in filters:
-            if message in filters:
-                await message.reply(filters[message])
+            if message.text in filters:
+                await message.reply(filters[message.chat.id][message.text])
     
