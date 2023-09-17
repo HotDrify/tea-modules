@@ -18,7 +18,7 @@ class FiltersMod(loader.Module):
             validators.Integer(minimum=0.0, maximum=10.0)
         )
     )
-    async def filter_cmd(self, message: types.Message, args: str):
+    async def filter_cmd(self, app: Client, message: types.Message, args: str):
         """добавить фильтр"""
         filters = self.db.get("Filters", "filters", {})
         data = json.loads(str(filters))
@@ -32,7 +32,7 @@ class FiltersMod(loader.Module):
         upd = json.dumps(data)
         self.db.set("Filters", "filters", upd)
         await utils.answer(message, f"✅ фильтр <b>{args}</b> сохранен.")
-    async def stopall_cmd(self, message: types.Message, args: str):
+    async def stopall_cmd(self, app: Client, message: types.Message, args: str):
         """остановить фильтры"""
         filters = self.db.get("Filters", "filters", {})
         if message.chat.id not in filters:
