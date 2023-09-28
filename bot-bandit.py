@@ -32,4 +32,4 @@ class BotBanditMod(loader.Module):
                 for command in commands:
                     await conv.ask(command)
                     await asyncio.sleep(1)
-            await asyncio.sleep(86400)
+                await asyncio.sleep(86400)
