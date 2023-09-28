@@ -20,6 +20,7 @@ class BotBanditMod(loader.Module):
                 'wait',
                 1,
                 validators.Integer(minimum=1, maximum=5)
+            )
         )
     async def load_cmd(self, app: Client, message: types.Message):
         if self.config.get("run"):
