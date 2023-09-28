@@ -26,10 +26,10 @@ class BotBanditMod(loader.Module):
             message,
             "🌙 обновленно!")
     async def botrun(self, app):
-        while True:
-            async with fsm.Conversation(app, "@banditchatbot", purge = True) as conv:
+        async with fsm.Conversation(app, "@banditchatbot", purge = True) as conv:
+            while True:
                 commands = ['я', 'бизнес', 'снять деньги', 'склад', 'закупить сырьё', 'закупить на все деньги', 'оплатить']
                 for command in commands:
                     await conv.ask(command)
                     await asyncio.sleep(1)
-        await asyncio.sleep(86400)
+            await asyncio.sleep(86400)
