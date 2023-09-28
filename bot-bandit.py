@@ -14,7 +14,7 @@ class BotBanditMod(loader.Module):
             ConfigValue(
                 'run',
                 True,
-                validator.Boolean()
+                validators.Boolean()
             )
         )
     async def load_cmd(self, app: Client, message: types.Message):
