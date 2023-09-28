@@ -15,11 +15,6 @@ class BotBanditMod(loader.Module):
                 'run',
                 True,
                 validators.Boolean()
-            ),
-            ConfigValue(
-                'wait',
-                1,
-                validators.Integer(minimum=1, maximum=5)
             )
         )
     async def load_cmd(self, app: Client, message: types.Message):
@@ -36,5 +31,5 @@ class BotBanditMod(loader.Module):
                 commands = ['я', 'бизнес', 'снять деньги', 'склад', 'закупить сырьё', 'закупить на все деньги', 'оплатить']
                 for command in commands:
                     await conv.ask(command)
-                    await asyncio.sleep(self.config.get("wait"))
+                    await asyncio.sleep(1)
         await asyncio.sleep(86400)
