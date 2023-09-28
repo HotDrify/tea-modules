@@ -7,7 +7,7 @@ from .. import (
 from ..types import Config, ConfigValue
 
 @loader.module(name="bot-bandit", author="hotdrify", version="1.2(teagram)")
-class BotBandit(loader.Module):
+class BotBanditMod(loader.Module):
     """автофарм для бота бандита."""
     def __init__(self):
         self.config = Config(
