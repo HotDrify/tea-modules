@@ -19,13 +19,13 @@ class BotBanditMod(loader.Module):
         )
     async def load_cmd(self, app: Client, message: types.Message):
         if self.config.get("run"):
-            self.tasks = [asyncio.create_task(self.botrun(client))]
+            self.tasks = [asyncio.create_task(self.botrun(app))]
         else:
             self.tasks = []
         await utils.answer(
             message,
             "🌙 обновленно!")
-    async def botrun(self, app: Client):
+    async def botrun(self, app):
         while True:
             async with fsm.Conversation(app, "@banditchatbot", purge = True) as conv:
                 commands = ['я', 'бизнес', 'снять деньги', 'склад', 'закупить сырьё', 'закупить на все деньги', 'оплатить']
