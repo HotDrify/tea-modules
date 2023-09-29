@@ -1,6 +1,8 @@
 import logging
 import asyncio
-import os, reu
+import itertools
+import os
+import re
 
 from pyrogram import Client, types
 from .. import (
@@ -41,15 +43,23 @@ class BotBanditMod(loader.Module):
                 commands = ['я', 'работа', '👮🏻‍♂️ федерал']
                 for command in commands:
                     await conv.ask(command)
+                    await asyncio.sleep(1)
                 msg = await conv.get_response()
                 path = await client.download_media(msg, msg.photo.file_id + ".png")
                 async with fsm.Conversation(app, "@TranslateIDrobot", purge = True) as conv: # OCR
                     conv.ask_media(path, "photo")
                     await asyncio.sleep(10)
                     msg = await conv.get_response()
-                    os.remove(path)
-                    match = re.search(r'ЗАШИФРОВАННОЕ СЛОВО - (\S+)', msg.text)
-                    if match:
-                        word = match.group(1)
-                    
+                    async with fsm.Conversation(app, "@banditchatbot", purge = True) as conv:
+                        os.remove(path)
+                        match = re.search(r'ЗАШИФРОВАННОЕ СЛОВО - (\S+)', msg.text)
+                        if match:
+                            encrypted = match.group(1)
+                            words = [''.join(p) for p in itertools.permutations(encrypted)]
+                            for word in words:
+                                conv.ask(word)
+                                await asyncio.sleep(1)
+                                msg = await conv.get_response()
+                                if msg.text == "окей! ты заработал $6.000. идём дальше.":
+                                    pass
                     
