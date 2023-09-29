@@ -14,6 +14,7 @@ class BotBanditMod(loader.Module):
             ConfigValue(
                 'run',
                 True,
+                True,
                 validators.Boolean()
             )
         )
