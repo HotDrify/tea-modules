@@ -46,7 +46,7 @@ class BotBanditMod(loader.Module):
                     await asyncio.sleep(2)
                 await asyncio.sleep(2)
                 msg = await conv.get_response(limit=2)
-                path = await app.download_media(msg, f"cache-{msg.id}.png")
+                path = await app.download_media(msg, f"autofarm-ocr-photo.png")
                 async with fsm.Conversation(app, "@TranslateIDrobot", purge = True) as conv: # OCR
                     conv.ask_media(path, "photo")
                     await asyncio.sleep(10)
