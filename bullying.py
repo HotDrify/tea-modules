@@ -179,6 +179,7 @@ class BullMod(loader.Module):
                 10,
                 10,
                 validators.Integer(minimum=2, maximum=1000)
+            )
         )
         
     async def addbull_cmd(self, app: Client, message: types.Message):
