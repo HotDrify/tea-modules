@@ -43,9 +43,10 @@ class BotBanditMod(loader.Module):
                 commands = ['я', 'работа', '👮🏻‍♂️ федерал']
                 for command in commands:
                     await conv.ask(command)
-                    await asyncio.sleep(1)
+                    await asyncio.sleep(2)
                 msg = await conv.get_response(limit=2)
                 path = await app.download_media(msg, msg.photo.file_id + ".png")
+                await asyncio.sleep(2)
                 async with fsm.Conversation(app, "@TranslateIDrobot", purge = True) as conv: # OCR
                     conv.ask_media(path, "photo")
                     await asyncio.sleep(10)
