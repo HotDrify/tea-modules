@@ -173,7 +173,12 @@ class BullMod(loader.Module):
                 1,
                 1,
                 validators.Integer(minimum=0, maximum=20)
-            )
+            ),
+            ConfigValue(
+                'delete_time',
+                10,
+                10,
+                validators.Integer(minimum=2, maximum=1000)
         )
         
     async def addbull_cmd(self, app: Client, message: types.Message):
@@ -231,4 +236,6 @@ class BullMod(loader.Module):
     async def watcher(self, app: Client, message: types.Message):
         if message.from_user.id in self.db.get("bull", "users", []):
             await asyncio.sleep(self.config["wait_time"])
-            await message.reply(random.choice(bullr))
+            msg = await message.reply(random.choice(bullr))
+            await asyncio.sleep(self.config["delete_time"])
+            await msg.delete()
